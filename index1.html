@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodología de la Intervención</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f6f7; margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        #header-bar { background-color: #2c3e50; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 1000; }
+        #header-bar h1 { margin: 0; font-size: 1.2rem; }
+        .btn-regresar { background-color: #e74c3c; color: white; padding: 8px 15px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 0.9rem; display: none; }
+        .menu-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 900px; width: 100%; margin: auto; padding: 20px; box-sizing: border-left; }
+        .card { background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 25px; text-align: center; transition: transform 0.2s; text-decoration: none; border-left: 6px solid; cursor: pointer; }
+        .card:hover { transform: translateY(-5px); }
+        .fase-1 { border-left-color: #1A5276; color: #1A5276; }
+        .fase-2 { border-left-color: #CB4335; color: #CB4335; }
+        .fase-3 { border-left-color: #1A5276; color: #1A5276; }
+        .fase-4 { border-left-color: #CB4335; color: #CB4335; }
+        .card h2 { margin: 0 0 5px 0; font-size: 1.3rem; }
+        #map-viewer { width: 100%; flex-grow: 1; border: none; display: none; }
+    </style>
+</head>
+<body>
+
+    <div id="header-bar">
+        <h1 id="title-text">Metodología para el Diseño y Preparación de la Intervención</h1>
+        <a href="#" class="btn-regresar" id="btn-back" onclick="mostrarMenu()">← Regresar al Menú</a>
+    </div>
+
+    <div class="menu-container" id="menu-fases">
+        <div class="card fase-1" onclick="cargarMapa('markmap_01.html', 'Fase I: Acciones Previas')">
+            <h2>Fase I</h2><p>Acciones Previas</p>
+        </div>
+        <div class="card fase-2" onclick="cargarMapa('markmap_02.html', 'Fase II: Diseño y Validación')">
+            <h2>Fase II</h2><p>Diseño y Validación</p>
+        </div>
+        <div class="card fase-3" onclick="cargarMapa('markmap_03.html', 'Fase III: Preparación')">
+            <h2>Fase III</h2><p>Preparación</p>
+        </div>
+        <div class="card fase-4" onclick="cargarMapa('markmap_04.html', 'Fase IV: Implementación')">
+            <h2>Fase IV</h2><p>Implementación</p>
+        </div>
+    </div>
+
+    <iframe id="map-viewer" src=""></iframe>
+
+    <script>
+        function cargarMapa(url, nombreFase) {
+            document.getElementById('menu-fases').style.display = 'none';
+            document.getElementById('map-viewer').style.display = 'block';
+            document.getElementById('btn-back').style.display = 'inline-block';
+            document.getElementById('map-viewer').src = url;
+            document.getElementById('title-text').innerText = nombreFase;
+        }
+
+        function mostrarMenu() {
+            document.getElementById('menu-fases').style.display = 'grid';
+            document.getElementById('map-viewer').style.display = 'none';
+            document.getElementById('btn-back').style.display = 'none';
+            document.getElementById('map-viewer').src = '';
+            document.getElementById('title-text').innerText = 'Metodología para el Diseño y Preparación de la Intervención';
+        }
+    </script>
+</body>
+</html>
